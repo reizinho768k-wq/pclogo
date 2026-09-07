@@ -64,10 +64,15 @@ except ImportError:
     BOLD = '\033[1m'
     RESET = '\033[0m'
 
-# ---------- Host/Port Configuration (must be at top level) ----------
+# ---------- Host/Port Configuration (Render Ready) ----------
 PROXY_HOST = os.environ.get('PROXY_HOST', '0.0.0.0')
-PROXY_PORT = int(os.environ.get('PORT', 5030))          # Render uses PORT env
-PROXY_BASE_URL = os.environ.get('PROXY_BASE_URL', f'http://{PROXY_HOST}:{PROXY_PORT}/')
+PROXY_PORT = int(os.environ.get('PORT', 5030))
+
+RENDER_EXTERNAL_URL = os.environ.get('RENDER_EXTERNAL_URL')
+if RENDER_EXTERNAL_URL:
+    PROXY_BASE_URL = RENDER_EXTERNAL_URL.rstrip('/') + '/'
+else:
+    PROXY_BASE_URL = os.environ.get('PROXY_BASE_URL', f'http://{PROXY_HOST}:{PROXY_PORT}/')
 
 # ---------- Embedded Protobuf Descriptors ---------
 mYdEsCrIpToR = b'\n\x08my.proto"\xae\t\n\x08GameData\x12\x11\n\ttimestamp\x18\x03 \x01(\t\x12\x11\n\tgame_name\x18\x04 \x01(\t\x12\x14\n\x0cgame_version\x18\x05 \x01(\x05\x12\x14\n\x0cversion_code\x18\x07 \x01(\t\x12\x0f\n\x07os_info\x18\x08 \x01(\t\x12\x13\n\x0bdevice_type\x18\t \x01(\t\x12\x18\n\x10network_provider\x18\n \x01(\t\x12\x17\n\x0fconnection_type\x18\x0b \x01(\t\x12\x14\n\x0cscreen_width\x18\x0c \x01(\x05\x12\x15\n\rscreen_height\x18\r \x01(\x05\x12\x0b\n\x03dpi\x18\x0e \x01(\t\x12\x10\n\x08cpu_info\x18\x0f \x01(\t\x12\x11\n\ttotal_ram\x18\x10 \x01(\x05\x12\x10\n\x08gpu_name\x18\x11 \x01(\t\x12\x13\n\x0bgpu_version\x18\x12 \x01(\t\x12\x0f\n\x07user_id\x18\x13 \x01(\t\x12\x12\n\nip_address\x18\x14 \x01(\t\x12\x10\n\x08language\x18\x15 \x01(\t\x12\x0f\n\x07open_id\x18\x16 \x01(\t\x12\x15\n\rplatform_type\x18\x17 \x01(\x05\x12\x1a\n\x12device_form_factor\x18\x18 \x01(\t\x12\x14\n\x0cdevice_model\x18\x19 \x01(\t\x12\x14\n\x0caccess_token\x18\x1d \x01(\t\x12\x18\n\x10unknown_field_30\x18\x1e \x01(\x05\x12"\n\x1asecondary_network_provider\x18) \x01(\t\x12!\n\x19secondary_connection_type\x18* \x01(\t\x12\x11\n\tunique_id\x18\x39 \x01(\t\x12\x10\n\x08field_60\x18< \x01(\x05\x12\x10\n\x08field_61\x18= \x01(\x05\x12\x10\n\x08field_62\x18> \x01(\x05\x12\x10\n\x08field_63\x18? \x01(\x05\x12\x10\n\x08field_64\x18@ \x01(\x05\x12\x10\n\x08field_65\x18A \x01(\x05\x12\x10\n\x08field_66\x18B \x01(\x05\x12\x10\n\x08field_67\x18C \x01(\x05\x12\x10\n\x08field_70\x18F \x01(\x05\x12\x10\n\x08field_73\x18I \x01(\x05\x12\x14\n\x0clibrary_path\x18J \x01(\t\x12\x10\n\x08field_76\x18L \x01(\x05\x12\x10\n\x08apk_info\x18M \x01(\t\x12\x10\n\x08field_78\x18N \x01(\x05\x12\x10\n\x08field_79\x18O \x01(\x05\x12\x17\n\x0fos_architecture\x18Q \x01(\t\x12\x14\n\x0cbuild_number\x18S \x01(\t\x12\x10\n\x08field_85\x18U \x01(\x05\x12\x18\n\x10graphics_backend\x18V \x01(\t\x12\x19\n\x11max_texture_units\x18W \x01(\x05\x12\x15\n\rrendering_api\x18X \x01(\x05\x12\x18\n\x10encoded_field_89\x18Y \x01(\t\x12\x10\n\x08field_92\x18\\ \x01(\x05\x12\x13\n\x0bmarketplace\x18] \x01(\t\x12\x16\n\x0eencryption_key\x18^ \x01(\t\x12\x15\n\rtotal_storage\x18_ \x01(\x05\x12\x10\n\x08field_97\x18a \x01(\x05\x12\x10\n\x08field_98\x18b \x01(\x05\x12\x10\n\x08field_99\x18c \x01(\t\x12\x11\n\tfield_100\x18d \x01(\tb\x06proto3'
@@ -364,13 +369,12 @@ def print_banner():
 if __name__ == '__main__':
     print_banner()
 
-    # Mensagem visual solicitada (Criador por vortex ofc) que some em 30 segundos
+    # Mensagem de criador (vortex ofc) que aparece por 30 segundos e depois some
     print(f"\n{MAGENTA}{BOLD}╔══════════════════════════════════════════════════════════════════╗{RESET}")
     print(f"{MAGENTA}{BOLD}║         ✨ CRIADO POR: VORTEX OFC - TODOS OS DIREITOS RESERVADOS ✨      ║{RESET}")
     print(f"{MAGENTA}{BOLD}╚══════════════════════════════════════════════════════════════════╝{RESET}\n")
     print(f"{YELLOW}[!] Esta mensagem sumirá automaticamente em 30 segundos...{RESET}")
     
-    # Aguarda 30 segundos e limpa a tela de novo para o painel principal
     time.sleep(30)
     os.system('cls' if os.name == 'nt' else 'clear')
 
