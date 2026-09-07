@@ -108,9 +108,9 @@ def decode_protobuf(data):
 # ---------- Emulator Mode Fields ----------
 EMULATOR_FIELDS = {
     "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    "game_name": "free fire",
+    "game_name": "free fire Max",
     "game_version": 1,
-    "version_code": "1.126.15",
+    "version_code": "2.131.1",
     "os_info": "Windows 10",
     "device_type": "PC",
     "network_provider": "WiFi",
@@ -118,16 +118,16 @@ EMULATOR_FIELDS = {
     "screen_width": 1920,
     "screen_height": 1080,
     "dpi": "96",
-    "cpu_info": "Intel Core i7-8700K @ 3.70GHz",
+    "cpu_info": "Intel Core i5-2400 CPU @ 3.10GHz",
     "total_ram": 16384,
-    "gpu_name": "NVIDIA GeForce GTX 1060",
+    "gpu_name": "NVIDIA GeForce GTX 1650",
     "gpu_version": "OpenGL ES 3.2",
     "user_id": "Google|emulator-account",
-    "ip_address": "192.168.1.100",
+    "ip_address": "10.0.2.15",
     "language": "en",
     "platform_type": 4,
     "device_form_factor": "Desktop",
-    "device_model": "Bluestacks",
+    "device_model": "MSI App Player 5",
     "unique_id": "emulator-12345",
     "os_architecture": "x86_64",
     "build_number": "20240815",
@@ -398,5 +398,5 @@ if __name__ == '__main__':
         print(f"\n{YELLOW}[!] CONNECTION SEVERED. INITIATING CLEANUP...{RESET}")
         remove_config()
         server.shutdown()
-        print(f"{CYAN}[>] LEO MDZ PC OUT. 💀{RESET}\n")
+        print(f"{CYAN}[>]  VORTEX PC 💀{RESET}\n")
         sys.exit(0)
