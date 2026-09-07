@@ -3,4 +3,3 @@ pycryptodome
 protobuf
 blackboxprotobuf
 colorama
-gunicorn
