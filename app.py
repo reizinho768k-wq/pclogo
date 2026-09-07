@@ -108,9 +108,9 @@ def decode_protobuf(data):
 # ---------- Emulator Mode Fields ----------
 EMULATOR_FIELDS = {
     "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-    "game_name": "free fire Max",
+    "game_name": "free fire",
     "game_version": 1,
-    "version_code": "2.131.1",
+    "version_code": "1.126.15",
     "os_info": "Windows 10",
     "device_type": "PC",
     "network_provider": "WiFi",
@@ -118,16 +118,16 @@ EMULATOR_FIELDS = {
     "screen_width": 1920,
     "screen_height": 1080,
     "dpi": "96",
-    "cpu_info": "Intel Core i5-2400 CPU @ 3.10GHz",
+    "cpu_info": "Intel Core i7-8700K @ 3.70GHz",
     "total_ram": 16384,
-    "gpu_name": "NVIDIA GeForce GTX 1650",
+    "gpu_name": "NVIDIA GeForce GTX 1060",
     "gpu_version": "OpenGL ES 3.2",
     "user_id": "Google|emulator-account",
-    "ip_address": "10.0.2.15",
+    "ip_address": "192.168.1.100",
     "language": "en",
     "platform_type": 4,
     "device_form_factor": "Desktop",
-    "device_model": "MSI App Player 5",
+    "device_model": "Bluestacks",
     "unique_id": "emulator-12345",
     "os_architecture": "x86_64",
     "build_number": "20240815",
@@ -222,7 +222,6 @@ def deploy_config_adb():
     print(f"{YELLOW}[!] COPY THIS FILE TO THE GAME'S DATA FOLDER:{RESET}")
     print(f"    /storage/emulated/0/Android/data/com.dts.freefiremax/files/")
     print(f"{CYAN}[>] PROXY URL SET TO: {PROXY_BASE_URL}{RESET}")
-    # Print content for easy copy
     with open("localconfig.json", "r") as f:
         content = f.read()
     print(f"{CYAN}[>] FILE CONTENT:\n{content}{RESET}")
@@ -344,15 +343,15 @@ def print_banner():
     os.system('cls' if os.name == 'nt' else 'clear')
     banner = f"""
 {BOLD}{GREEN}
-   ▄█   ▄█▄    ▄████████  ▄█    ▄████████    ▄█    █▄    ███▄▄▄▄      ▄████████ 
-  ███ ▄███▀   ███    ███ ███   ███    ███   ███    ███   ███▀▀▀██▄   ███    ███ 
-  ███▐██▀     ███    ███ ███▌  ███    █▀    ███    ███   ███   ███   ███    ███ 
- ▄█████▀     ▄███▄▄▄▄██▀ ███▌  ███         ▄███▄▄▄▄███▄▄ ███   ███   ███    ███ 
-▀▀█████▄    ▀▀███▀▀▀▀▀   ███▌  ▀██████████▀▀███▀▀▀▀███▀  ███   ███ ▀███████████ 
-  ███▐██▄   ▀███████████ ███           ███  ███    ███   ███   ███   ███    ███ 
-  ███ ▀███▄   ███    ███ ███     ▄█    ███  ███    ███   ███   ███   ███    ███ 
-  ███   ▀█▀   ███    ███ █▀    ▄████████▀   ███    █▀     ▀█   █▀    ███    █▀  
-              ███    ███                                                          
+    ▄█    ▄█▄    ▄████████  ▄█    ▄████████    ▄█    █▄    ███▄▄▄▄      ▄████████ 
+  ███ ▄███▀    ███    ███ ███   ███    ███   ███    ███   ███▀▀▀██▄    ███    ███ 
+  ███▐██▀      ███    ███ ███▌  ███    █▀    ███    ███   ███   ███    ███    ███ 
+ ▄█████▀      ▄███▄▄▄▄██▀ ███▌  ███          ▄███▄▄▄▄███▄▄ ███   ███    ███    ███ 
+▀▀█████▄     ▀▀███▀▀▀▀▀   ███▌  ▀██████████▀▀███▀▀▀▀███▀  ███   ███ ▀███████████ 
+  ███▐██▄    ▀███████████ ███            ███  ███    ███   ███   ███    ███    ███ 
+  ███ ▀███▄    ███    ███ ███      ▄█    ███  ███    ███   ███   ███    ███    ███ 
+  ███    ▀█▀    ███    ███ █▀     ▄████████▀   ███    █▀     ▀█   █▀     ███    █▀  
+              ███    ███                                                       
 
 {CYAN}[>] {YELLOW}SYSTEM OVERRIDE INITIATED...
 {CYAN}[>] {YELLOW}AUTHORIZATION: {RED}LEO MDZ PC {YELLOW}(GHOST PROTOCOL)
@@ -365,9 +364,19 @@ def print_banner():
 if __name__ == '__main__':
     print_banner()
 
+    # Mensagem visual solicitada (Criador por vortex ofc) que some em 30 segundos
+    print(f"\n{MAGENTA}{BOLD}╔══════════════════════════════════════════════════════════════════╗{RESET}")
+    print(f"{MAGENTA}{BOLD}║         ✨ CRIADO POR: VORTEX OFC - TODOS OS DIREITOS RESERVADOS ✨      ║{RESET}")
+    print(f"{MAGENTA}{BOLD}╚══════════════════════════════════════════════════════════════════╝{RESET}\n")
+    print(f"{YELLOW}[!] Esta mensagem sumirá automaticamente em 30 segundos...{RESET}")
+    
+    # Aguarda 30 segundos e limpa a tela de novo para o painel principal
+    time.sleep(30)
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     print(f"""
 {BLUE}╔══════════════════════════════════════════════════════════════════╗
-║                     {BOLD}{CYAN}PROXY SERVER{RESET}{BLUE}                             ║
+║                    {BOLD}{CYAN}PROXY SERVER{RESET}{BLUE}                                   ║
 ╠══════════════════════════════════════════════════════════════════╣
 ║                                                                  ║
 ║  {CYAN}Target    :{RESET} {BOLD}Free Fire MAX (Manual file placement){RESET}
@@ -398,5 +407,5 @@ if __name__ == '__main__':
         print(f"\n{YELLOW}[!] CONNECTION SEVERED. INITIATING CLEANUP...{RESET}")
         remove_config()
         server.shutdown()
-        print(f"{CYAN}[>]  VORTEX PC 💀{RESET}\n")
+        print(f"{CYAN}[>] LEO MDZ PC OUT. 💀{RESET}\n")
         sys.exit(0)
